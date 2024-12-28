@@ -1,3 +1,4 @@
 C:\Users\calde\OneDrive - INACAP\Portafolio\Programming_language\c++\CLRdesktop.net\CLRdesktop.net\x64\Debug\CLRdesktop.net.vcxproj.AssemblyReference.cache
 C:\Users\calde\OneDrive - INACAP\Portafolio\Programming_language\c++\CLRdesktop.net\CLRdesktop.net\x64\Debug\CLRdesktopnet.MyForm.resources
 C:\Users\calde\OneDrive - INACAP\Portafolio\Programming_language\c++\CLRdesktop.net\CLRdesktop.net\x64\Debug\CLRdesktop.net.vcxproj.GenerateResource.cache
+C:\Users\calde\OneDrive - INACAP\Portafolio\Programming_language\c++\CLRdesktop.net\CLRdesktop.net\x64\Debug\CLRdesktopnet.MyForm1.resources
