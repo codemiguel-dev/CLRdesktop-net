@@ -41,7 +41,7 @@ namespace CLRdesktopnet {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -62,6 +62,8 @@ namespace CLRdesktopnet {
 			this->checkBox1->TabIndex = 0;
 			this->checkBox1->Text = L"checkBox1";
 			this->checkBox1->UseVisualStyleBackColor = true;
+			// Agregar el manejador de eventos para cuando se cambie el estado del CheckBox
+			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &MyForm1::checkBox1_CheckedChanged);
 			// 
 			// MyForm1
 			// 
@@ -76,5 +78,19 @@ namespace CLRdesktopnet {
 
 		}
 #pragma endregion
+
+		// Manejador de eventos para el CheckBox
+		void checkBox1_CheckedChanged(Object^ sender, EventArgs^ e)
+		{
+			// Verifica si el CheckBox está marcado
+			if (checkBox1->Checked)
+			{
+				MessageBox::Show("El CheckBox está marcado.", "Estado del CheckBox", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			else
+			{
+				MessageBox::Show("El CheckBox está desmarcado.", "Estado del CheckBox", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+		}
 	};
 }
