@@ -3,6 +3,7 @@
 namespace CLRStuff {
     using namespace System;
     using namespace System::Windows::Forms;
+    using namespace System::Collections::Generic;
 
     public ref class MyForm : public Form
     {
@@ -29,6 +30,8 @@ namespace CLRStuff {
             this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
             this->btn_status = (gcnew System::Windows::Forms::Button());
             this->label2 = (gcnew System::Windows::Forms::Label());
+            this->comboboxjeson = (gcnew System::Windows::Forms::ComboBox());
+            this->btn_get_json = (gcnew System::Windows::Forms::Button());
             this->SuspendLayout();
             // 
             // btn_message
@@ -81,9 +84,29 @@ namespace CLRStuff {
             this->label2->TabIndex = 5;
             this->label2->Text = L"label_status";
             // 
+            // comboboxjeson
+            // 
+            this->comboboxjeson->FormattingEnabled = true;
+            this->comboboxjeson->Location = System::Drawing::Point(286, 210);
+            this->comboboxjeson->Name = L"comboboxjeson";
+            this->comboboxjeson->Size = System::Drawing::Size(104, 21);
+            this->comboboxjeson->TabIndex = 6;
+            // 
+            // btn_get_json
+            // 
+            this->btn_get_json->Location = System::Drawing::Point(106, 207);
+            this->btn_get_json->Name = L"btn_get_json";
+            this->btn_get_json->Size = System::Drawing::Size(127, 23);
+            this->btn_get_json->TabIndex = 7;
+            this->btn_get_json->Text = L"Obtener JSON";
+            this->btn_get_json->UseVisualStyleBackColor = true;
+            this->btn_get_json->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_2);
+            // 
             // MyForm
             // 
             this->ClientSize = System::Drawing::Size(824, 261);
+            this->Controls->Add(this->btn_get_json);
+            this->Controls->Add(this->comboboxjeson);
             this->Controls->Add(this->label2);
             this->Controls->Add(this->btn_status);
             this->Controls->Add(this->checkBox1);
@@ -92,37 +115,52 @@ namespace CLRStuff {
             this->Name = L"MyForm";
             this->ResumeLayout(false);
             this->PerformLayout();
-
         }
+
     private: System::Windows::Forms::Button^ btn_message;
-
-
     private: System::Windows::Forms::Label^ label1;
     private: System::Windows::Forms::CheckBox^ checkBox1;
     private: System::Windows::Forms::Button^ btn_status;
-
     private: System::Windows::Forms::Label^ label2;
+    private: System::Windows::Forms::ComboBox^ comboboxjeson;
+    private: System::Windows::Forms::Button^ btn_get_json;
 
     private:
         System::ComponentModel::Container^ components;
 
-        // Método para el evento del botón
-    private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
-    {
-        if (checkBox1->Checked)
+        // Método para mostrar un mensaje con el CheckBox
+        System::Void button1_Click(System::Object^ sender, System::EventArgs^ e)
         {
-            // Si el checkbox está marcado, mostrar un mensaje indicando que está activo
-            MessageBox::Show("El CheckBox está marcado.", "Estado del CheckBox", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            if (checkBox1->Checked)
+            {
+                MessageBox::Show("El CheckBox está marcado.", "Estado del CheckBox", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            }
+            else
+            {
+                MessageBox::Show("El CheckBox está desmarcado.", "Estado del CheckBox", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            }
         }
-        else
-        {
-            // Si el checkbox no está marcado, mostrar un mensaje indicando que está desmarcado
-            MessageBox::Show("El CheckBox está desmarcado.", "Estado del CheckBox", MessageBoxButtons::OK, MessageBoxIcon::Information);
-        }
-    }
 
-    private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
-        label2->Text = "hello";
-    }
-};
+        // Método para cambiar el estado del Label
+        System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e)
+        {
+            label2->Text = "Estado cambiado";
+        }
+
+        // Método para cargar datos JSON al ComboBox
+        System::Void button1_Click_2(System::Object^ sender, System::EventArgs^ e)
+        {
+            // Simulación de datos JSON
+            array<String^>^ jsonItems = { "Item1", "Item2", "Item3", "Item4" };
+
+            // Limpiar ComboBox y agregar datos
+            comboboxjeson->Items->Clear();
+            for each (String ^ item in jsonItems)
+            {
+                comboboxjeson->Items->Add(item);
+            }
+
+            MessageBox::Show("Datos cargados correctamente en el ComboBox.", "Información", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        }
+    };
 }
