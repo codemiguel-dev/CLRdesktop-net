@@ -32,6 +32,8 @@ namespace CLRStuff {
             this->label2 = (gcnew System::Windows::Forms::Label());
             this->comboboxjeson = (gcnew System::Windows::Forms::ComboBox());
             this->btn_get_json = (gcnew System::Windows::Forms::Button());
+            this->web_browser = (gcnew System::Windows::Forms::WebBrowser());
+            this->web_brow = (gcnew System::Windows::Forms::WebBrowser());
             this->SuspendLayout();
             // 
             // btn_message
@@ -101,10 +103,22 @@ namespace CLRStuff {
             this->btn_get_json->Text = L"Obtener JSON";
             this->btn_get_json->UseVisualStyleBackColor = true;
             this->btn_get_json->Click += gcnew System::EventHandler(this, &MyForm::button1_Click_2);
+     
+            // 
+            // web_brow
+            // 
+            this->web_brow->Location = System::Drawing::Point(430, 88);
+            this->web_brow->MinimumSize = System::Drawing::Size(20, 20);
+            this->web_brow->Name = L"web_brow";
+            this->web_brow->Size = System::Drawing::Size(551, 417);
+            this->web_brow->TabIndex = 8;
+            this->web_brow->Navigate("https://www.google.cl/");  // Asegúrate de tener una URL válida
+
             // 
             // MyForm
             // 
-            this->ClientSize = System::Drawing::Size(824, 261);
+            this->ClientSize = System::Drawing::Size(1038, 446);
+            this->Controls->Add(this->web_brow);
             this->Controls->Add(this->btn_get_json);
             this->Controls->Add(this->comboboxjeson);
             this->Controls->Add(this->label2);
@@ -115,6 +129,7 @@ namespace CLRStuff {
             this->Name = L"MyForm";
             this->ResumeLayout(false);
             this->PerformLayout();
+
         }
 
     private: System::Windows::Forms::Button^ btn_message;
@@ -124,6 +139,10 @@ namespace CLRStuff {
     private: System::Windows::Forms::Label^ label2;
     private: System::Windows::Forms::ComboBox^ comboboxjeson;
     private: System::Windows::Forms::Button^ btn_get_json;
+private: System::Windows::Forms::WebBrowser^ web_browser;
+private: System::Windows::Forms::WebBrowser^ web_brow;
+
+
 
     private:
         System::ComponentModel::Container^ components;
@@ -162,5 +181,6 @@ namespace CLRStuff {
 
             MessageBox::Show("Datos cargados correctamente en el ComboBox.", "Información", MessageBoxButtons::OK, MessageBoxIcon::Information);
         }
-    };
+
+};
 }
